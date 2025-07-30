@@ -11,6 +11,20 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual([], gilded_rose.items)
 
+    def test_sulfuras_doesnt_age_when_update_quality_is_called(self):
+        sulfuras = "Sulfuras, Hand of Ragnaros"
+        items = [Item(sulfuras, 1, 1)]
+
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        
+        self.assertEqual(len(gilded_rose.items), 1)
+        
+        first_item = gilded_rose.items[0]
+        self.assertEqual(first_item.name, sulfuras)
+        self.assertEqual(first_item.quality, 1)
+        self.assertEqual(first_item.sell_in, 1)
+
     def test_item_ages_when_update_quality_is_called(self):
         items = [Item(None, 0, 1)]
 
