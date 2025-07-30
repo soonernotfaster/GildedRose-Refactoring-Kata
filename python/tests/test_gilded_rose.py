@@ -11,12 +11,14 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual([], gilded_rose.items)
 
-    def test_sell_in_is_decremented_when_one_item_is_passed(self):
+    def test_item_ages_when_update_quality_is_called(self):
         items = [Item(None, 0, 1)]
 
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
+        
         self.assertEqual(len(gilded_rose.items), 1)
+        
         first_item = gilded_rose.items[0]
         self.assertEqual(first_item.name, None)
         self.assertEqual(first_item.quality, 0)
