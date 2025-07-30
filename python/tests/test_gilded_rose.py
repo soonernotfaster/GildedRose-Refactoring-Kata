@@ -22,8 +22,8 @@ class GildedRoseTest(unittest.TestCase):
         
         first_item = gilded_rose.items[0]
         self.assertEqual(first_item.name, sulfuras)
-        self.assertEqual(first_item.quality, 1)
         self.assertEqual(first_item.sell_in, 1)
+        self.assertEqual(first_item.quality, 1)
 
     def test_conjured_mana_cake_ages_when_update_quality_is_called(self):
         name = "Conjured Mana Cake"
@@ -36,8 +36,8 @@ class GildedRoseTest(unittest.TestCase):
         
         first_item = gilded_rose.items[0]
         self.assertEqual(first_item.name, name)
-        self.assertEqual(first_item.quality, 0)
         self.assertEqual(first_item.sell_in, -1)
+        self.assertEqual(first_item.quality, 0)
 
     def test_quality_doesnt_change_given_backstage_pass(self):
         name = "Backstage passes to a TAFKAL80ETC concert"
@@ -73,8 +73,8 @@ class ItemTest(unittest.TestCase):
         item = Item(name, None, None)
 
         self.assertEqual(item.name, name)
-        self.assertEqual(item.quality, None)
         self.assertEqual(item.sell_in, None)
+        self.assertEqual(item.quality, None)
 
     def test_error_when_quality_none(self):
         with self.assertRaises(TypeError):
