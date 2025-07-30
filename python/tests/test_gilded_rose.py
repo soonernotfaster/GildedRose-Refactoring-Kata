@@ -26,9 +26,10 @@ class GildedRoseTest(unittest.TestCase):
 
 class ItemTest(unittest.TestCase):
     def test_aged_brie(self):
-        item = Item("Aged Brie", None, None)
+        name = "Aged Brie"
+        item = Item(name, None, None)
 
-        self.assertEqual(item.name, "Aged Brie")
+        self.assertEqual(item.name, name)
         self.assertEqual(item.quality, None)
         self.assertEqual(item.sell_in, None)
 
