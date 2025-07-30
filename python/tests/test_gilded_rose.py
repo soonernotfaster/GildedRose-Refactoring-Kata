@@ -25,6 +25,13 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(first_item.sell_in, -1)
 
 class ItemTest(unittest.TestCase):
+    def test_aged_brie(self):
+        item = Item("Aged Brie", None, None)
+
+        self.assertEqual(item.name, "Aged Brie")
+        self.assertEqual(item.quality, None)
+        self.assertEqual(item.sell_in, None)
+
     def test_error_when_quality_none(self):
         with self.assertRaises(TypeError):
             Item(None, None, None)

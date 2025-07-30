@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
 
+NAMES = [
+    "Aged Brie",
+    "Backstage passes to a TAFKAL80ETC concert",
+    "Sulfuras, Hand of Ragnaros",
+    "Elixir of the Mongoose",
+    "Conjured Mana Cake",
+    "+5 Dexterity Vest"
+]
 class GildedRose(object):
 
     def __init__(self, items):
@@ -40,13 +48,17 @@ class GildedRose(object):
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name
-        if sell_in is None:
-            raise TypeError("sell_in must be a positive int")
-        self.sell_in = sell_in
+        if self.name == "Aged Brie":
+            self.sell_in = sell_in
+            self.quality = quality
+        else:
+            if sell_in is None:
+                raise TypeError("sell_in must be a positive int")
+            self.sell_in = sell_in
 
-        if quality is None or quality <= 0:
-            raise TypeError("Quality must be a positive int")
-        self.quality = quality
+            if quality is None or quality <= 0:
+                raise TypeError("Quality must be a positive int")
+            self.quality = quality
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
