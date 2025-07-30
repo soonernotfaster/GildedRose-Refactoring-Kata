@@ -24,9 +24,9 @@ class ItemTest(unittest.TestCase):
 
     def test_error_when_quality_is_less_than_one(self):
         with self.assertRaises(TypeError):
-            Item(-1, None, None)
+            Item(None, None, -1)
         with self.assertRaises(TypeError):
-            Item(0, None, None)
+            Item(None, None, 0)
 
     def test_error_when_sell_in_is_none(self):
         with self.assertRaises(TypeError):
