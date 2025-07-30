@@ -25,8 +25,9 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(first_item.quality, 1)
         self.assertEqual(first_item.sell_in, 1)
 
-    def test_item_ages_when_update_quality_is_called(self):
-        items = [Item(None, 0, 1)]
+    def test_conjured_mana_cake_ages_when_update_quality_is_called(self):
+        name = "Conjured Mana Cake"
+        items = [Item(name, 0, 1)]
 
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
@@ -34,7 +35,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(len(gilded_rose.items), 1)
         
         first_item = gilded_rose.items[0]
-        self.assertEqual(first_item.name, None)
+        self.assertEqual(first_item.name, name)
         self.assertEqual(first_item.quality, 0)
         self.assertEqual(first_item.sell_in, -1)
 
