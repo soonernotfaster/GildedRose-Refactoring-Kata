@@ -39,6 +39,20 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(first_item.quality, 0)
         self.assertEqual(first_item.sell_in, -1)
 
+    def test_quality_doesnt_change_given_backstage_pass(self):
+        name = "Backstage passes to a TAFKAL80ETC concert"
+        items = [Item(name, 1, 50)]
+
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        
+        self.assertEqual(len(gilded_rose.items), 1)
+        
+        first_item = gilded_rose.items[0]
+        self.assertEqual(first_item.name, name)
+        self.assertEqual(first_item.sell_in, 0)
+        self.assertEqual(first_item.quality, 50)
+
 class ItemTest(unittest.TestCase):
     def test_aged_brie(self):
         name = "Aged Brie"
