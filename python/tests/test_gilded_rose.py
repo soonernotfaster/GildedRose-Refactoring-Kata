@@ -5,11 +5,28 @@ from gilded_rose import Item, GildedRose
 
 
 class GildedRoseTest(unittest.TestCase):
-    def test_foo(self):
-        items = [Item("foo", 0, 0)]
+    def test_no_items_when_no_items_are_passed(self):
+        items = []
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertEqual("fixme", items[0].name)
+        self.assertEqual([], gilded_rose.items)
+
+    def test_unknown_when_one_item_is_passed(self):
+        items = [Item(None, None, None)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEqual([], gilded_rose.items)
+
+class ItemTest(unittest.TestCase):
+    def test_error_when_quality_none(self):
+        with self.assertRaises(TypeError):
+            Item(None, None, None)
+
+    def test_error_when_quality_is_less_than_one(self):
+        with self.assertRaises(TypeError):
+            Item(-1, None, None)
+        with self.assertRaises(TypeError):
+            Item(0, None, None)
 
 
 if __name__ == '__main__':
