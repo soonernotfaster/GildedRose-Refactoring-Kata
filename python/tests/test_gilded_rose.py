@@ -11,11 +11,16 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual([], gilded_rose.items)
 
-    def test_unknown_when_one_item_is_passed(self):
-        items = [Item(None, None, 1)]
+    def test_sell_in_is_decremented_when_one_item_is_passed(self):
+        items = [Item(None, 0, 1)]
+
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertEqual([], gilded_rose.items)
+        self.assertEqual(len(gilded_rose.items), 1)
+        first_item = gilded_rose.items[0]
+        self.assertEqual(first_item.name, None)
+        self.assertEqual(first_item.quality, 0)
+        self.assertEqual(first_item.sell_in, -1)
 
 class ItemTest(unittest.TestCase):
     def test_error_when_quality_none(self):
