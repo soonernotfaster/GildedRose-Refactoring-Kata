@@ -22,11 +22,13 @@ class ItemTest(unittest.TestCase):
         with self.assertRaises(TypeError):
             Item(None, None, None)
 
-    def test_error_when_quality_is_less_than_one(self):
+    def test_error_when_quality_is_negative_one(self):
         with self.assertRaises(TypeError):
-            Item(None, None, -1)
+            Item(None, 0, -1)
+
+    def test_error_when_quality_is_zero(self):
         with self.assertRaises(TypeError):
-            Item(None, None, 0)
+            Item(None, 0, 0)
 
     def test_error_when_sell_in_is_none(self):
         with self.assertRaises(TypeError):

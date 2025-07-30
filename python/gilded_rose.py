@@ -44,7 +44,7 @@ class Item:
             raise TypeError("sell_in must be a positive int")
         self.sell_in = sell_in
 
-        if quality is None or quality < 0:
+        if quality is None or quality <= 0:
             raise TypeError("Quality must be a positive int")
         self.quality = quality
 
