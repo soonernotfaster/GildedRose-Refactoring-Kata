@@ -12,7 +12,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual([], gilded_rose.items)
 
     def test_unknown_when_one_item_is_passed(self):
-        items = [Item(None, None, None)]
+        items = [Item(None, None, 1)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual([], gilded_rose.items)
@@ -27,6 +27,10 @@ class ItemTest(unittest.TestCase):
             Item(-1, None, None)
         with self.assertRaises(TypeError):
             Item(0, None, None)
+
+    def test_error_when_sell_in_is_none(self):
+        with self.assertRaises(TypeError):
+            Item(None, None, 1)
 
 
 if __name__ == '__main__':

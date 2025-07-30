@@ -40,7 +40,10 @@ class GildedRose(object):
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name
+        if sell_in is None:
+            raise TypeError("Quality must be a positive int")
         self.sell_in = sell_in
+
         if quality is None:
             raise TypeError("Quality must be a positive int")
         self.quality = quality
